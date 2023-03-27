@@ -1,0 +1,20 @@
+
+{% extends "order/base.html" %}
+{% block content %}
+<h1><center> Favourites </center></h1>
+{% for order in fav %}
+    <article class="media content-section">
+      <div class="media-body">
+        <div class="article-metadata d-flex justify-contents-between">
+          <h3><a class="mr-2" href="{% url 'order-detail' order.id %}">Order No. : {{ order.order_no }}</a></h3>
+        </div>
+        <div>
+          <small class="text-muted"> {{ order.time_posted|date:"H:i F d,Y" }}</small>
+        </div>
+        <p class="article-content"><b>{{ order.customer_name }}</b>
+        {{ order.order }}</p>
+        Tag: {% for tag in order.tags.all %}{{tag.name}}{% if not forloop.last %}, {% endif %}{% endfor %}
+      </div>
+    </article>
+{% endfor %}
+{% endblock content %}

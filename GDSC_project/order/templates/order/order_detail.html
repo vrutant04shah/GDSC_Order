@@ -1,0 +1,21 @@
+
+{% extends "order/base.html" %}
+{% block content %}
+    <article class="media content-section">
+      <div class="media-body">
+        <div class="article-metadata">
+          <h4>Order No. : {{ order.order_no }}</h4>
+          <h7 class="text-muted"> {{ object.time_posted|date:"H:i F d,Y" }}</h7>
+        </div>
+        <br>
+        <p> Order Details: </p>
+        <p class="article-content">Customer Name: <b><font size="+2">{{ object.customer_name }}</font></b>
+        Order: <font size="+2"><b>{{ object.order }}<br>{{ object.tags }}</b></font></p>
+      </div>
+    </article>
+      {% if object.author == user %}
+          <a class="btn btn-secondary btn-sm mt-1 mb-1" href="{% url 'order-update' object.id %}">Update Order</a>
+          <a class="btn btn-danger btn-sm mt-1 mb-1" href="{% url 'order-delete' object.id %}">Delete Order</a>
+      {% endif %}
+    
+{% endblock content %}

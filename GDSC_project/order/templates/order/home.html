@@ -1,0 +1,28 @@
+
+{% extends "order/base.html" %}
+{% block content %}
+{% if user.is_authenticated %}
+    {% for order in orders %}
+        <article class="media content-section">
+          <div class="media-body">
+            <div class="article-metadata d-flex justify-content-between">
+              <h3><a class="mr-2" href="{% url 'order-detail' order.id %}">Order No. : {{ order.order_no }}</a></h3>
+                      <a href="{% url 'order-favourite_add' order.id %}">
+                          <i class="far fa-star"></i>
+                      </a>
+            </div>
+            <div>
+              <small class="text-muted"> {{ order.time_posted|date:"H:i F d,Y" }}</small>
+            </div>
+            <p class="article-content"><b>{{ order.customer_name }}</b>
+            {{ order.order }}<br>
+            Tag: {% for tag in order.tags.all %}{{tag.name}}{% if not forloop.last %}, {% endif %}{% endfor %}
+            </p>
+          </div>
+        </article>
+    {% endfor %}
+{% else %}
+    <h2> To use Order Keeper, you need to Register.</h2>
+    <a href="{% url 'register' %}"> Register Here </a> 
+{% endif %}
+{% endblock content %}
