@@ -16,7 +16,7 @@ Authentication is handled via Google OAuth, ensuring secure and hassle-free logi
 
 - Order Management: Create, read, update, and delete orders.
 
-- Search Functionality: Search orders using tags.
+- Search Functionality: Search orders using tags implemented using Taggable Manager.
 
 - Favorites: Mark important orders as favorites for quick access.
 
@@ -34,3 +34,4 @@ Authentication is handled via Google OAuth, ensuring secure and hassle-free logi
 - Database: MySQL
 
 - Authentication: Google OAuth
+
